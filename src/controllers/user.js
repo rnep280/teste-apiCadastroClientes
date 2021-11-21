@@ -7,7 +7,7 @@ const { hasPassword } = require('../helpers/auth')
 const getAll = async(req, res) => {
     try {
         const users = await User.find()
-        res.status(200).json({mensagem: "Lista de usuários do meu banco", users})
+        res.status(200).send(users.name) 
     } catch (error) {
         res.status(500).json({
             message: error.message
