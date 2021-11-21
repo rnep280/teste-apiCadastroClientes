@@ -7,7 +7,10 @@ const { hasPassword } = require('../helpers/auth')
 const getAll = async(req, res) => {
     try {
         const users = await User.find()
-        res.status(200).send(users.name) 
+
+        const clientes = users.map(user => user.name)
+
+        res.status(200).json({mensagem: "Lista dos clientes cadastrados: ", clientes})
     } catch (error) {
         res.status(500).json({
             message: error.message
